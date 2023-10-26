@@ -103,12 +103,39 @@ void reverseLevelOrderTraversal(node* root){
     }
 }
 
+void buildFromLevelOrder(node* &root){
+    queue<node*> q;
+    int data;
+    cout << "data: ";
+    cin >> data;
+    root = new node(data);
+    q.push(root);
+
+    while(!q.empty()){
+        node* temp = q.front();q.pop();
+
+        cout << "Enter for left of " << temp->data;
+        int leftData;cin >> leftData;
+        if(leftData != -1){
+            temp->left = new node(leftData);
+            q.push(temp->left);
+        }
+        cout << "Enter for right of " << temp->data;
+        int rightData;cin >> rightData;
+        if(rightData != -1){
+            temp->right = new node(rightData);
+            q.push(temp->right);
+        }
+
+    }
+}
+
 int main() {
     
     node* root = NULL;
-    root = buildTree(root);
-
-    // levelOrderTraversal(root);
-    reverseLevelOrderTraversal(root);
+    // root = buildTree(root);
+    buildFromLevelOrder(root);
+    levelOrderTraversal(root);
+    // reverseLevelOrderTraversal(root);
     return 0;
 }

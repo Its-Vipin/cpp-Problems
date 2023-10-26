@@ -29,6 +29,16 @@ node* buildTree(node* root){
     return root;
 }
 
+void inorder(node* root){
+    if(!root){
+        return;
+    }
+
+    inorder(root->left);
+    cout << root->data << " ";
+    inorder(root->right);
+}
+
 void preorder(node* root){
     if(!root){
         return;
@@ -39,12 +49,22 @@ void preorder(node* root){
     preorder(root->right);
 }
 
+void postOrder(node* root){
+    if(!root){
+        return;
+    }
+
+    postOrder(root->left);
+    postOrder(root->right);
+    cout << root->data << " ";
+}
+
 int main() {
     node* root = NULL;
 
     root = buildTree(root);
 
-    preorder(root);
+    inorder(root);
 
     // 1 2 4 -1 -1 5 -1 -1 3 6 -1 -1 7 -1 -1
     return 0;

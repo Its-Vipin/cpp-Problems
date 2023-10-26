@@ -30,13 +30,32 @@ node* buildTree(node* root){
 }
 
 void inorder(node* root){
-    if(!root){
-        return;
-    }
+    
+    stack<node*> s;
+    node* cur = root;
 
-    inorder(root->left);
-    cout << root->data << " ";
-    inorder(root->right);
+    while(cur || !s.empty()){
+        while(cur){
+            s.push(cur);
+            cur=cur->left;
+        }
+
+        cur=s.top();
+        s.pop();
+        
+        cout << cur->data << " ";
+        cur = cur->right;
+    }
+}
+
+void preorder(node* root){
+    queue<node*> s;
+    node* cur = root;
+    while(cur || !s.empty()){
+        while(cur){
+            q.push(cur)
+        }
+    }
 }
 
 int main() {
